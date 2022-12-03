@@ -1,0 +1,65 @@
+.about-me {
+    /*min-height: 1079px;*/
+    margin: 0 70px;
+    padding: 0;
+}
+
+.about-me__content {
+    display: flex;
+    margin: 0;
+    padding: 66px 0 0 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.about-me__info {
+    max-width: 600px;
+}
+
+.about-me__title {
+    margin: 0;
+    padding: 0;
+    max-width: 600px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 116%;
+    letter-spacing: -0.04em;
+}
+
+.techs__subtitle {
+    margin: 20px 0 0 0;
+    padding: 0;
+}
+
+.about-me__text {
+    margin: 26px 0 75px 0;
+    padding: 0;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 157%;
+    mix-blend-mode: normal;
+}
+
+.about-me__photo {
+    width: 270px;
+    height: 327px;
+    border-radius: 10px;
+}
+
+.about-me__link {
+    margin: 100px 0 0 0;
+    padding: 0;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: black;
+    text-decoration: none;
+}
+
+.about-me__link:hover {
+    cursor: pointer;
+    color: #a0a0a0;
+}

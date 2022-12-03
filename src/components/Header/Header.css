@@ -1,0 +1,57 @@
+.header {
+    background-color: #F3C1F8;
+    min-height: 74px;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: flex;
+}
+
+.header__logo {
+    width: 38px;
+    height: 38px;
+    margin: 018px auto 18px 70px;
+    padding: 0;
+}
+
+.header__container {
+    gap: 30px;
+    margin: 21px 70px 21px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.header__registr {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 133%;
+    display: flex;
+    /*align-items: center;
+    color: #000000;*/
+    text-align: right;
+    
+    margin: 0;
+    padding: 0;
+    height: 16px;
+    width: 77px;
+    border: none;
+    background-color: transparent;
+}
+
+.header__login {
+    background-color: #000000;
+    color: #FFFF;
+    border-radius: 3px;
+    margin: 0;
+    padding: 0;
+    width: 76px;
+    height: 32px;
+    /*align-items: center;*/
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 133%;
+
+}
