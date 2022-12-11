@@ -1,42 +1,54 @@
 import React, { useState } from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
-import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
-import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import Register from '../Register/Register';
+import Login from '../Login/Login';
+import Movies from '../Movies/Movies';
+import SavedMovies from '../SavedMovies/SavedMovies';
+import Profile from '../Profile/Profile';
+import NotFound from '../NotFound/NotFound';
 
 function App() {
-const [currentUser, setCurrentUser] = useState({});
+    const [currentUser, setCurrentUser] = useState({});
+    const [cards, setcards] = useState([]);
+    const isLoggedIn = true;
 
     return (
-        <CurrentUserContext.Provider value={ currentUser }>
         <div className="page">
             <div className="page__content">
-                <Switch>
-                    <Route path="/">
+                <Routes>
+                    <Route exac path="/" element={<div>
                         <Header />
                         <Main />
                         <Footer />
-                        </Route>
-                        <Route path="/signup">
-                            <Redirect to="/" />
-                        </Route>
-                        <Route path="/signin">
-                            <Redirect to="/" />
-                        </Route>
-                        <ProtectedRoute
-                        path="/movies" />
-                        <ProtectedRoute
-                        path="/saved-movies" />
-                        <ProtectedRoute
-                        path="/profile" />
-                </Switch>
+                    </div>} >
+                    </Route>
+                    <Route path="/signup" element={
+                        <Register />} >
+                    </Route>
+                    <Route path="/signin" element={
+                        <Login />} >
+                    </Route>
+                    <Route path="/movies" element={
+                        <Movies movies={cards} />} >
+                    </Route>
+                    <Route path="saved-movies" element={
+                        <SavedMovies />} >
+                    </Route>
+                    <Route path="/profile" element={<div>
+                        <Header />
+                        <Profile />
+                    </div>} >
+                    </Route>
+                    <Route path="/*" element={
+                        <NotFound />} >                        
+                    </Route>
+                </Routes>
             </div>
-           
-        </div>
-        </CurrentUserContext.Provider>
+        </div >
     )
 }
 

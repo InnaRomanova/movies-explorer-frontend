@@ -21,11 +21,10 @@
     font-size: 22px;
     line-height: 27px;
     letter-spacing: -0.04em;
-    /*color: #000000;*/
 }
 
 .about-project__content {
-    padding: 70px 0;
+    padding: 70px 0 110px 0;
     margin: 0;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -56,12 +55,10 @@
 }
 
 .about-project__time {
-    max-width: 1140px;
-    margin: 0;
-    padding: 39px 0;
+    grid-gap: 14px 0;
     display: grid;
-    grid-template-columns: minmax(228px, 1fr) minmax(912px, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    gap: 14px 0;
+    grid-template-columns: 1fr 4fr;
 }
 
 .about-project__time-black {
@@ -109,4 +106,101 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+@media screen and (max-width: 768px) {
+    .about-project {
+        margin-left: 50px;
+        margin-right: 50px;
+        min-height: 585px;
+    }
+
+    .about-project__container {
+        max-width: 668px;
+        padding-top: 91px;
+    }
+
+    .about-project__content {
+        gap: 30px;
+        padding-bottom: 70px;
+    }
+
+    .about-project__text {
+        margin-top: 20px;
+        font-size: 12px;
+        line-height: 150%;
+    }
+
+    .about-project__time {
+        padding-top: 25px;
+    }
+}
+
+@media screen and (max-width: 598px) {
+    .about-project__content {
+        padding-top: 61px;
+        padding-bottom: 34px;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 56px;
+    }
+
+    .about-project__subtitle {
+        font-size: 18px;
+        line-height: 22px;
+    }
+
+    .about-project__text {
+        margin-top: 16px;
+        font-size: 11px;
+        line-height: 145%;
+    }
+
+}
+
+@media screen and (max-width: 520px) {
+    .about-project__time-black {
+        width: 100px;
+        height: 35px;
+        font-size: 11px;
+        line-height: 13px;
+    }
+
+    .about-project__time-gray {
+        /*max-width: 184px;*/
+        height: 35px;
+        font-size: 11px;
+        line-height: 13px;
+    }
+
+    .about-project__time-description {
+        font-family: 'Suisse Intl', 'Arial', sans-serif;
+        font-weight: 400;
+        font-size: 11px;
+        line-height: 13px;
+    }
+
+    .about-project__time {
+        padding-top: 25px;
+        grid-template-rows: 31px;
+    }
+
+    .about-project {
+        margin-left: 18px;
+        margin-right: 18px;
+        height: 641px;
+    }
+
+    .about-project__container {
+        /*max-width: 292px;*/
+        padding-top: 70px;
+    }
+
+    .about-project__title {
+        font-size: 18px;
+        line-height: 22px;
+    }
+
+    .about-project__text {
+        line-height: 16px;
+    }
 }

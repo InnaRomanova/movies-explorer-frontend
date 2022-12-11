@@ -11,7 +11,7 @@ function AboutMe() {
             <div className="about-me__content">
                 <div className="about-me__info">
                     <h2 className="about-me__title">Инна</h2>
-                <p className="techs__subtitle">Фронтенд-разработчик, 33 года</p>
+                <p className="about-me__subtitle">Фронтенд-разработчик, 33 года</p>
                 <p className="about-me__text">Я родилась в Чувашии и живу в Чебоксарах.Я люблю
                     слушать музыку, увлекаюсь чтением художественных книг, вязанием, а ещё с удовольствием
                     люблю покататься на коньках. Благодаря курсу Веб-разработчик в Яндекс Практикуме, убедилась,

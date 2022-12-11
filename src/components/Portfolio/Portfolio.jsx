@@ -21,7 +21,7 @@ function Portfolio() {
                     className="portfolio__link portfolio__link-border"
                     target="_blank"
                     rel="noreferrer">
-                    <p className="portfolio__text">Адаптивый сайт</p>
+                    <p className="portfolio__text">Адаптивный сайт</p>
                     <img className="portfolio__arrow" src={arrow} alt="стрелка" />
                 </a>
                 <a

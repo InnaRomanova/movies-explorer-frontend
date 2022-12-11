@@ -6,7 +6,7 @@ function Footer() {
         <section className="footer">
             <h3 className="footer__title">Учебный проект Яндекс.Практикум х BeatFilm.</h3>
             <div className="footer__info">
-                <p className="footer__author">© 2020</p>
+                <p className="footer__author">© 2022</p>
                 <div className="footer__item">
                 <a
           href="https://practicum.yandex.ru"

@@ -20,36 +20,96 @@
 .portfolio__link-border {
     border-bottom: 1px solid #e8e8e8;
     padding-bottom: 20px;
-  }
+}
 
 .portfolio__title {
-font-style: normal;
-font-weight: 400;
-font-size: 18px;
-line-height: 111%;
-color: #A0A0A0;
-mix-blend-mode: normal;
-margin: 0 0 25px 0;
-padding: 0;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 111%;
+    color: #A0A0A0;
+    mix-blend-mode: normal;
+    margin: 0 0 25px 0;
+    padding: 0;
 }
 
 .portfolio__text {
-font-style: normal;
-font-weight: 400;
-font-size: 30px;
-line-height: 167%;
-letter-spacing: -0.04em; 
-margin: 20px 0 0 0;
-padding: 0;
-max-width: 880px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 167%;
+    letter-spacing: -0.04em;
+    margin: 20px 0 0 0;
+    padding: 0;
+    max-width: 880px;
 }
 
 .portfolio__arrow {
-font-style: normal;
-font-weight: 400;
-font-size: 30px;
-line-height: 200%;
-letter-spacing: -0.04em;
-margin: 33px 5px 0 0;
-padding: 0;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 200%;
+    letter-spacing: -0.04em;
+    margin: 33px 5px 0 0;
+    padding: 0;
+}
+
+@media screen and (max-width: 768px) {
+    .portfolio {
+        margin-left: 50px;
+        margin-right: 50px;
+        padding-top: 90px;
+    }
+
+    .portfolio__title {
+        margin-bottom: 27px;
+    }
+
+    .portfolio__link-border {
+        padding-bottom: 19px;
+    }
+
+    .portfolio__text {
+        font-size: 28px;
+        line-height: 179%;
+        margin-top: 22px;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .portfolio {
+        margin-left: 14px;
+        margin-right: 14px;
+        padding-top: 69px;
+        padding-bottom: 108px;
+    }
+
+    .portfolio__title {
+        font-size: 14px;
+        line-height: 143%;
+        margin-bottom: 20px;
+    }
+
+
+    .portfolio__text {
+        font-size: 18px;
+        line-height: 156%;
+        margin-top: 20px;
+    }
+
+    .portfolio__arrow {
+        max-width: 12px;
+        height: 28px;
+        font-size: 18px;
+        line-height: 156%;
+        margin-top: 19px;
+        margin-right: 3px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .portfolio {
+        margin-left: 14px;
+        margin-right: 14px;
+    }
 }

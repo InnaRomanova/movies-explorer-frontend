@@ -1,0 +1,123 @@
+.card {
+    margin: 0;
+    padding: 0;
+    background: #FDFDFD;
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.08);
+    /* max-width: 364px; */
+    min-height: 271px;
+}
+
+.card__container {
+    margin: 14px 14px 14px 14px;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.card__info {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.card__title {
+    margin: 0;
+    padding: 0;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+}
+
+.card__time {
+    margin: 9px 0 0;
+    padding: 0;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 13px;
+    display: flex;
+    align-items: center;
+    color: #A0A0A0;
+}
+
+
+.card__saved {
+    background: #f9f9f9;
+    border: none;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.09);
+    border-radius: 50px;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    margin: 12px 7px 0 0;
+    padding: 0;
+    background-image: url(../../images/saved.svg);
+    border-radius: 36px;
+}
+
+.card__saved:hover {
+    opacity: 0.6;
+}
+
+.card__saved__active {
+    background: black;
+    background-image: url(../../images/saved.svg);
+}
+
+.card__saved-button {
+    background-image: url();
+    width: 16px;
+    height: 16px;
+    border: none;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+}
+
+.card__saved-button {
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+.card__image {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 203px;
+    object-fit: cover;
+}
+
+@media screen and (max-width: 1024px) {
+    .card {
+        /* max-width: 339px; */
+        min-height: 258px;
+    }
+
+    .card__image {
+        min-height: 190px;
+    }
+
+    .card__saved {
+        margin-top: 6px;
+        margin-right: 0;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .card {
+        min-height: 236px;
+    }
+
+    .card__image {
+        min-height: 168px;
+    }
+
+    .card__saved {
+        margin-top: 6px;
+        margin-right: 0;
+    }
+}
