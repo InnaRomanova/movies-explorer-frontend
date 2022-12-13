@@ -54,7 +54,7 @@
     font-weight: 400;
     font-size: 13px;
     line-height: 16px;
-
+    outline: none;
 }
 
 .form__span {
@@ -68,7 +68,7 @@
 }
 
 .form__span_active {
-   visibility: visible;
+    visibility: visible;
 }
 
 .form__button-submit {
@@ -110,7 +110,7 @@
 .form__button-save_loading {
     pointer-events: none;
     opacity: 0.6;
-  }
+}
 
 .form__text {
     margin: 0;
@@ -136,14 +136,14 @@
 }
 
 .form__enter:hover {
-   cursor: pointer;
-   opacity: 0.8;
+    cursor: pointer;
+    opacity: 0.8;
 }
 
 @media screen and (max-width: 999px) {
-.register {
-    padding-top: 232px;
-}
+    .register {
+        padding-top: 232px;
+    }
 }
 
 @media screen and (max-width: 521px) {
@@ -181,9 +181,9 @@
         font-size: 12px;
         line-height: 15px;
     }
-    
+
     .form__enter {
         font-size: 12px;
         line-height: 15px;
     }
-    } 
+}

@@ -10,12 +10,12 @@
     border-bottom: 1px solid #545454;
     margin: 0;
     padding: 110px 0 0 0;
-    height: 50px;
+    /*height: 50px;*/
 }
 
 .about-project__title {
     margin: 0;
-    padding: 0;
+    padding: 0 0 22px 0;
     font-style: normal;
     font-weight: 400;
     font-size: 22px;
@@ -108,7 +108,7 @@
     justify-content: center;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
     .about-project {
         margin-left: 50px;
         margin-right: 50px;
@@ -126,13 +126,13 @@
     }
 
     .about-project__text {
-        margin-top: 20px;
+        margin-top: 22px;
         font-size: 12px;
         line-height: 150%;
     }
 
     .about-project__time {
-        padding-top: 25px;
+        padding-top: 24px;
     }
 }
 
@@ -198,6 +198,7 @@
     .about-project__title {
         font-size: 18px;
         line-height: 22px;
+        padding-bottom: 28px;
     }
 
     .about-project__text {
