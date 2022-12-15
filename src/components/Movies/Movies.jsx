@@ -34,7 +34,6 @@ function Movies({onSearchCards}) {
             <Header />
             <SearchForm onSearchCards={onSearchCards} />
             <MoviesCardList cards={movies}/>
-            <Preloader />
             <Footer />
         </section>
     );
