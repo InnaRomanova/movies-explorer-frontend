@@ -24,15 +24,15 @@ function Login() {
         <form className="form__container">
             <label className="form__label">E-mail
                 <input className="form__input" value={email} onChange={((event) => { setEmail(event.target.value) })} required/>
-                {!isValidEmail && <span className="form__span">Что-то пошло не так ...</span>}
+                <span className={isValidEmail ? "form__span_hidden" : "form__span"}>Что-то пошло не так ...</span>
             </label>
             <label className="form__label">Пароль
                 <input className="form__input" value={password} onChange={((event) => { setPassword(event.target.value) })} required/>
-                {!isValidPassword && <span className="form__span">Что-то пошло не так ...</span>}
+                <span className={isValidPassword ? "form__span_hidden" : "form__span"}>Что-то пошло не так ...</span>
             </label>
             <div className="form__buttom-container">
             <button className="form__button-submit" type="submit">Войти</button>
-            <div className="form__text">Ещё не зарегистрированы? <Link to="/sign-up" className="form__enter">Регистрация</Link></div></div>
+            <div className="form__text">Ещё не зарегистрированы? <Link to="/signup" className="form__enter">Регистрация</Link></div></div>
         </form>
     </div>
     );

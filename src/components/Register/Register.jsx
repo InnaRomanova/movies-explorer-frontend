@@ -33,21 +33,21 @@ function Register() {
             <h2 className="register__title">Добро пожаловать!</h2>
             <form className="form__container">
                 <label className="form__label">Имя
-                    <input className="form__input" value={name} onChange={((event) => { setName(event.target.value) })} required />
-                    {!isValidName && <span className="form__span">Что-то пошло не так ...</span>}
+                    <input className="form__input" value={name} onChange={((event) => { setName(event.target.value) })} required="" />
+                 <span className={isValidName ? "form__span_hidden" : "form__span"}>Что-то пошло не так ...</span>
                 </label>
                 <label className="form__label">E-mail
-                    <input className="form__input" value={email} onChange={((event) => { setEmail(event.target.value) })} required />
-                    {!isValidEmail && <span className="form__span">Что-то пошло не так ...</span>}
+                    <input className="form__input" value={email} onChange={((event) => { setEmail(event.target.value) })} required="" />
+                    <span className={isValidEmail ? "form__span_hidden" : "form__span"}>Что-то пошло не так ...</span>
                 </label>
                 <label className="form__label">Пароль
-                    <input className="form__input" value={password} onChange={((event) => { setPassword(event.target.value) })} required />
-                    {!isValidPassword && <span className="form__span">Что-то пошло не так ...</span>}
+                    <input className="form__input" value={password} onChange={((event) => { setPassword(event.target.value) })} required="" />
+                    <span className={isValidPassword ? "form__span_hidden" : "form__span"}>Что-то пошло не так ...</span>
                 </label>
 
                 {isValidEmail && isValidName && isValidPassword ? (<button className="form__button-submit" 
                 type="submit">Зарегистрироваться</button>) : (<button className="form__button-submit_inactive">Зарегистрироваться</button>)}
-                <div className="form__text">Уже зарегистрированы? <Link to="/sign-in" className="form__enter">Войти</Link></div>
+                <div className="form__text">Уже зарегистрированы? <Link to="/signin" className="form__enter">Войти</Link></div>
             </form>
         </div>
     );

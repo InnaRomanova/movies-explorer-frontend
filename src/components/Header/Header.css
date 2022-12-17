@@ -12,7 +12,7 @@
 .header__loggined {
     background-color: white;
     height: 74px;
-    margin: 0 0 0 70px;
+    margin: 0 70px 0 70px;
     padding: 0;
     max-width: 1280px;
     display: flex;
@@ -75,7 +75,7 @@
     text-decoration: none;
 }
 
-.header__container_movies {
+.header__container-movies {
     margin: 0 0 0 63px;
     padding: 0;
     display: flex;
@@ -130,6 +130,14 @@
     display: none;
 }
 
+.header__container-account {
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
 @media screen and (max-width: 1024px) {
     .header__logo {
         margin-left: 30px;
@@ -140,7 +148,7 @@
         margin-right: 30px;
     }
 
-    .header__container_movies {
+    .header__container-movies {
         display: none;
     }
 
@@ -151,6 +159,10 @@
     .header__loggined {
         margin-left: 30px;
         margin-right: 30px;
+    }
+
+    .header__container-account {
+       
     }
 
     .header__account {

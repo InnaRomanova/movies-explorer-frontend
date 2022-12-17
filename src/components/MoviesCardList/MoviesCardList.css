@@ -1,6 +1,6 @@
 .cards {
     margin: 0;
-    padding: 79px 70px 68px;
+    padding: 77px 70px 68px;
 }
 
 .cards__list {
@@ -15,7 +15,7 @@
 
 .cards__container {
     margin: 0;
-    padding: 73px 0 30px;
+    padding: 79px 0 30px;
     min-height: 118px;
 }
 
@@ -41,7 +41,7 @@
     .cards {
         padding-left: 30px;
         padding-right: 30px;
-        padding-top: 82px;
+        padding-top: 78px;
     }
 
     .cards__list {

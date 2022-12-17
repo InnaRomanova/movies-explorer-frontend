@@ -26,10 +26,10 @@ function Header() {
             {!logginIn ? (<header className="header__loggined">
                 <Link to="/" className="header__logo-icon">
                 <img  src={Logo} alt="Логотип" /></Link>
-                <div className="header__container_movies">
+                <div className="header__container-movies">
                     <Link className="header__link-movies" to="/movies">Фильмы</Link>
                     <Link className="header__link-saved" to="/saved-movies">Сохранённые фильмы</Link> </div>
-                <div className="header__container">
+                <div className="header__container-account">
                     <Link className="header__account" to="/profile">Аккаунт
                         <img className="header__account-image" src={account} alt="Аккаунт" />
                     </Link>

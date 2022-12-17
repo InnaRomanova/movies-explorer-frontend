@@ -10,7 +10,7 @@ import movieImage from '../../images/image-cards.png';
 const movies = [
   { _id: 1, image: movieImage, name: '33 слова о дизайне', time: '1ч 42м', saved: true },
   { _id: 2, image: movieImage, name: '33 слова о дизайне', time: '1ч 42м', saved: false },
-//   { _id: 3, image: movieImage, name: '33 слова о дизайне', time: '1ч 42м', saved: false },
+  // { _id: 3, image: movieImage, name: '33 слова о дизайне', time: '1ч 42м', saved: false },
 //   { _id: 4, image: movieImage, name: '33 слова о дизайне', time: '1ч 42м', saved: false },
 //   { _id: 5, image: movieImage, name: '33 слова о дизайне', time: '1ч 42м', saved: false },
 //   { _id: 6, image: movieImage, name: '33 слова о дизайне', time: '1ч 42м', saved: false },

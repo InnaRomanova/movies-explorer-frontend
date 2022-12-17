@@ -2,7 +2,7 @@ import React from "react";
 import './MoviesCard.css';
 import movies from '../../images/image-cards.png';
 
-function MoviesCard({card}) {
+function MoviesCard({card, isSavedMovies}) {
     // const cardSavedButton = `${card.saved ? 'card__saved card__saved_active'
     // : 'card__saved-button'}`;
     return (
@@ -15,8 +15,8 @@ function MoviesCard({card}) {
             <span className="card__time">
                 1час
             </span>
-            </div>
-            <button className="card__saved"></button>
+            </div>      
+            <button className={isSavedMovies ? "card__delete-button" : "card__saved"} />
            </div>
            <img className="card__image" alt="Фильм" src={movies} />
         </li>

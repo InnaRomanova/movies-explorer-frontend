@@ -39,10 +39,10 @@
     color: #000000;
 }
 
-/*.search__input:hover {
-    opacity: 0.2;
+.search__input:focus {
+    background-color: rgba(43, 224, 128, 0.4);
 }
-*/
+
 .search__button {
     margin: 8px 9px 8px 0;
     padding: 0;
@@ -58,6 +58,12 @@
     width: 100px;
     height: 52px;
 }
+
+.search__button:hover {
+    cursor: pointer;
+    opacity: 0.6;
+}
+
 
 @media screen and (max-width: 1024px) {
     .search {
