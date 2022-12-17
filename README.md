@@ -1,1 +1,21 @@
-# movies-explorer-frontend
+# Проект: Movies-explorer-frontend
+
+**Использованные технологии**
+
+* HTML, CSS, Java Script.
+* Flexbox-верстка, Grid-Layout.
+* Медиазапросы и оптимизация под все устройства от 1280 до 320 разрешений.
+* Резиновая и адаптивная верстка.
+* Использование form.
+* Webpack.
+* React.
+
+**Figma**
+* [Ссылка на макет в Figma](https://disk.yandex.ru/d/jxtSL826MjigTw)
+
+### Инструкция по развертыванию проекта
+#### `npm start`
+
+Запустить проект в режиме разработки
+<br>
+Для просмотра [откройте](http://localhost:3000) в браузере.
