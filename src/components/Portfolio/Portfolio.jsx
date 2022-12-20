@@ -8,29 +8,29 @@ function Portfolio() {
         <section className="portfolio">
             <h3 className="portfolio__title">Портфолио</h3>
             <ul className="portfolio__list">
-                <li
-                    href="https://github.com/InnaRomanova/how-to-learn"
+                <li>
+                    <a href="https://github.com/InnaRomanova/how-to-learn"
                     className="portfolio__link portfolio__link-border"
                     target="_blank"
                     rel="noreferrer">
                     <p className="portfolio__text">Статичный сайт</p>
-                    <img className="portfolio__arrow" src={arrow} alt="стрелка" />
+                    <img className="portfolio__arrow" src={arrow} alt="стрелка" /></a>
                 </li>
-                <li
-                    href="https://innaromanova.github.io/russian-travel/"
+                <li>
+                    <a href="https://innaromanova.github.io/russian-travel/"
                     className="portfolio__link portfolio__link-border"
                     target="_blank"
                     rel="noreferrer">
                     <p className="portfolio__text">Адаптивный сайт</p>
-                    <img className="portfolio__arrow" src={arrow} alt="стрелка" />
+                    <img className="portfolio__arrow" src={arrow} alt="стрелка" /></a>
                 </li>
-                <li
-                    href="https://inna.domainname.student.nomoredomains.icu/#/sign-in"
+                <li>
+                    <a href="https://inna.domainname.student.nomoredomains.icu/#/sign-in"
                     className="portfolio__link portfolio__link-border"
                     target="_blank"
                     rel="noreferrer">
                     <p className="portfolio__text">Одностраничное приложение</p>
-                    <img className="portfolio__arrow" src={arrow} alt="стрелка" />
+                    <img className="portfolio__arrow" src={arrow} alt="стрелка" /></a>
                 </li>
             </ul>
         </section >

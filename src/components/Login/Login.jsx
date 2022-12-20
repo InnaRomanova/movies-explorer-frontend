@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { useEffect } from "react";
 import { isEmailValid, isPasswordValid } from "../../utils/validate";
 
-function Login() {
+function Login({onLogin}) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isValidEmail, setIsValidEmail] = useState(false);
@@ -16,12 +16,37 @@ function Login() {
         isEmailValid(email) ? setIsValidEmail(true) : setIsValidEmail(false);
         isPasswordValid(password) ? setIsValidPassword(true) : setIsValidPassword(false);
     }, [email, password])
+
+    //аутентификация
+    function handleSubmit(e) {
+        e.preventDefault();
+        onLogin({email, password})
+    }
+
+    function logout() {
+        fetch(`https://api.romanova.nomoredomains.club/signout`, {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({})
+          })
+            .then((res) => {
+                console.log(res);
+            })
+            .catch((err) => {
+                console.error(err);
+            })
+    }
     return (
         <div className="register">
             <Link to="/">
         <img className="register__logo" src={Logo} alt="Логотип" /></Link>
         <h2 className="register__title">Рады видеть!</h2>
         <form className="form__container">
+            <button onClick={logout}>выход</button>
             <label className="form__label">E-mail
                 <input className="form__input" value={email} onChange={((event) => { setEmail(event.target.value) })} required/>
                 <span className={isValidEmail ? "form__span_hidden" : "form__span"}>Что-то пошло не так ...</span>
@@ -31,7 +56,7 @@ function Login() {
                 <span className={isValidPassword ? "form__span_hidden" : "form__span"}>Что-то пошло не так ...</span>
             </label>
             <div className="form__buttom-container">
-            <button className="form__button-submit" type="submit">Войти</button>
+            <button className="form__button-submit" type="submit" onClick={handleSubmit}>Войти</button>
             <div className="form__text">Ещё не зарегистрированы? <Link to="/signup" className="form__enter">Регистрация</Link></div></div>
         </form>
     </div>
