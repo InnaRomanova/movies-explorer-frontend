@@ -20,48 +20,46 @@ class MainApi {
         headers = this._headers,
         credentials = this._isCredentials,
     ) {
-        const res = fetch(`${this._baseUrl}${path}`, {
+        return fetch(`${this._baseUrl}${path}`, {
             method, body, headers, credentials
-        })
-        return this._getResponse(res);
+        }).then((res) => this._getResponse(res))
     }
 
     signUp({name, email, password}) {
-        return this._getResponse('/signup', 'POST', {name, email, password});
+        return this._request('/signup', 'POST', {name, email, password});
     }
 
     signIn(data) {
-        return this._getResponse('/signin', 'POST', data);
+        return this._request('/signin', 'POST', data);
     }
 
     logout() {
-        return this._getResponse('/signout');
+        return this._request('/signout');
     }
 
     getProfile() {
-        return this._getResponse('/users/me');
+        return this._request('/users/me');
     }
 
     updateProfile(userInfo) {
-        return this._getResponse('/users/me', 'PATCH', userInfo)
+        return this._request('/users/me', 'PATCH', userInfo)
     }
 
     getSavedMovies() {
-        return this._getResponse('/movies');
+        return this._request('/movies');
     }
 
     addNewMovies(movie) {
-        return this._getResponse('movies', 'POST', JSON.stringify(movie));
+        return this._request('movies', 'POST', JSON.stringify(movie));
     }
 
     removeMovie(movieId) {
-        return this._getResponse(`/movies/${movieId}`, 'DELETE');
+        return this._request(`/movies/${movieId}`, 'DELETE');
     }
 }
 
 const api = new MainApi({
     baseUrl: 'https://api.romanova.nomoredomains.club',
-    //url: 'http://localhost:3000/',
     headers: {
         'Content-Type': 'application/json',
     },

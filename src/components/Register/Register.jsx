@@ -16,13 +16,11 @@ function Register({onRegister}) {
     const [isValidName, setIsValidName] = useState(false);
     const [isValidPassword, setIsValidPassword] = useState(false);
    // const {values, handleChange, errors} = useForm();
-
     useEffect(() => {
         isEmailValid(email) ? setIsValidEmail(true) : setIsValidEmail(false);
         isNameValid(name) ? setIsValidName(true) : setIsValidName(false);
         isPasswordValid(password) ? setIsValidPassword(true) : setIsValidPassword(false);
     }, [email, name, password])
-
     function handleSubmit(e) {
         e.preventDefault();
         onRegister({name, email, password})

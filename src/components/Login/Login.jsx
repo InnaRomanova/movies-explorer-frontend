@@ -23,30 +23,12 @@ function Login({onLogin}) {
         onLogin({email, password})
     }
 
-    function logout() {
-        fetch(`https://api.romanova.nomoredomains.club/signout`, {
-            method: 'POST',
-            mode: 'cors',
-            headers: {
-              Accept: 'application/json',
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({})
-          })
-            .then((res) => {
-                console.log(res);
-            })
-            .catch((err) => {
-                console.error(err);
-            })
-    }
     return (
         <div className="register">
             <Link to="/">
         <img className="register__logo" src={Logo} alt="Логотип" /></Link>
         <h2 className="register__title">Рады видеть!</h2>
         <form className="form__container">
-            <button onClick={logout}>выход</button>
             <label className="form__label">E-mail
                 <input className="form__input" value={email} onChange={((event) => { setEmail(event.target.value) })} required/>
                 <span className={isValidEmail ? "form__span_hidden" : "form__span"}>Что-то пошло не так ...</span>

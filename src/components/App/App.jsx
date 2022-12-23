@@ -13,6 +13,7 @@ import NotFound from '../NotFound/NotFound';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import { api } from '../../utils/MainApi';
+import { movieApi } from '../../utils/MovieApi';
 import { useEffect } from 'react';
 import axios from 'axios';
 
@@ -27,38 +28,13 @@ function App() {
     useEffect(() => {
         if (localStorage.getItem("jwt")) {
             const jwt = localStorage.getItem("jwt");
-
-
         }
     }, [])
 
     //регистрация пользователя
     function handleRegister({ name, email, password }) {
-        //api.signUp({name, email, password})
-        console.log(name, email, password);
-        //axios
-           // .post('https://api.romanova.nomoredomains.club')
-           fetch(`https://api.romanova.nomoredomains.club/signup`, {
-            method: 'POST',
-            mode: 'cors',
-            headers: {
-              Accept: 'application/json',
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-              name: name,
-              email: email,
-              password: password
-            })
-          })
-            .then((res) => {
-                console.log(res);
-                history.push('/signin');
-            })
-            .catch((err) => {
-                setErrorRequest(true);
-                console.error(err);
-            });
+        api.signUp({ name, email, password });
+        history('/movies');
     }
 
     //авторизация пользователя
@@ -80,7 +56,7 @@ function App() {
                 if (res) {
                     isLoggedIn(true);
                     // localStorage.setItem('jwt', res.token);
-                    history.push('/movies');
+                    history('/movies');
                 }
             })
             .catch((err) => {
@@ -93,7 +69,7 @@ function App() {
     function handleLogout() {
         localStorage.removeItem('jwt');
         isLoggedIn(false);
-        history.push('/');
+        history('/');
     }
 
     // редактирование профиля
@@ -106,6 +82,32 @@ function App() {
                 setTimeout(() => setErrorRequest(false), 4000);
                 console.log(`Ошибка выхода из аккаунта: &{err}`);
             })
+    }
+
+    function handleCardLike(card) {
+      api
+        .postCard(card)
+        .then((newMovie) => {
+          setSavedMovies([newMovie, ...savedMovies]);
+        })
+        .catch((err) => {
+          setIsSuccess(false);
+          console.log(err);
+          handleUnauthorized(err);
+        });
+    }
+  
+    function handleCardDelete(card) {
+      api
+        .deleteCard(card._id)
+        .then(() => {
+          setSavedMovies((state) => state.filter((item) => item._id !== card._id));
+        })
+        .catch((err) => {
+          setIsSuccess(false);
+          console.log(err);
+          handleUnauthorized(err);
+        });
     }
 
     return (
@@ -126,7 +128,12 @@ function App() {
                             <Login onLogin={handleLogin} />} >
                         </Route>
                         <Route path="/movies" element={
-                            <ProtectedRoute>
+                            <ProtectedRoute
+                            savedMovies={savedMovies}
+                            loggedIn={isLoggedIn}
+                            onCardDelete={handleCardDelete}
+                            component={Movies}
+                            handleLikeClick={handleCardLike}>
                                 <Movies movies={cards} />
                             </ProtectedRoute>} >
                         </Route>
