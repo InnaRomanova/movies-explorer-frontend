@@ -1,50 +1,46 @@
-class MovieApi {
-    constructor({ baseUrl, headers, credentials }) {
+class MoviesApi {
+    constructor({ baseUrl }) {
         this._baseUrl = baseUrl
-        this._headers = headers
-        this._isCredentials = credentials
+        //this._headers = headers
+        //this._isCredentials = credentials
     }
 
-    _getResponse(res) {
+    _getResponseData(movies) {
+        return movies.map(movie => ({
+            country: movie.country,
+            director: movie.director,
+            year: movie.year,
+            description: movie.description,
+            image: movie._baseUrl + movie.image.url,
+            trailerLink: movie.trailerLink,
+            thumbnail: movie._baseUrl + movie.image.url,
+            owner: movie.owner,
+            movieId: movie.id,
+            nameRU: movie.nameRu,
+            nameEN: movie.nameEN,
+        }))
+    }
+
+    _request(res) {
         if (!res.ok) {
-            return Promise.reject( res.json()); // возвращает ошибку
-          }
-          return res.json(); //если да, то возвращает полученные данные
+            const err = res.json();
+            return Promise.reject(res.json(err)); // возвращает ошибку
         }
-    
-
-    _request(
-        path = '',
-        method = 'GET',
-        body = null,
-        headers = this._headers,
-        credentials = this._isCredentials,
-    ) {
-        return fetch(`${this._baseUrl}${path}`, {
-            method, body, headers, credentials
-        }).then((res) => this._getResponse(res))
+        const movies = res.json();
+        return this._getResponseData(movies); //если да, то возвращает полученные данные
     }
 
-    getMovies({name, email, password}) {
-        return this._request('/movies', 'GET', {name, email, password});
+    getMovies() {
+        return this._request(fetch(`${this._baseUrl}/beatfilm-movies`));
     }
-
-    getMovies({name, email, password}) {
-        return this._request('/movies', 'GET', {name, email, password});
-    }
-
-    getMovies({name, email, password}) {
-        return this._request('/movies', 'GET', {name, email, password});
-    }
-    
 }
 
-const movieApi = new MovieApi({
-    baseUrl: 'https://api.romanova.nomoredomains.club',
-    headers: {
-        'Content-Type': 'application/json',
-    },
-    credentials: 'include',
+const moviesApi = new MoviesApi({
+    baseUrl: 'https://api.nomoreparties.co/',
+    // headers: {
+    //     'Content-Type': 'application/json',
+    // },
+    // credentials: 'include',
 })
 
-export { movieApi }
+export { moviesApi }
