@@ -4,33 +4,51 @@ import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Footer from "../Footer/Footer";
 import './SavedMovies.css';
+import { useState, useEffect } from "react";
+import { filterMovies, filterTimeMovies } from '../../utils/utils';
 
-import movieImage from '../../images/image-cards.png';
+function SavedMovies({ loggedIn, savedMovies, onCardDelete }) {
+  const [searchQwery, setSearchQwery] = useState('');
+  const [filterIsMovies, setFilterIsMovies] = useState(savedMovies); //фильтрация по запросу  и чекбоксу
+  const [isShortMovies, setIsShortMovies] = useState(false) // включение, отключение чекбоксар короткометражек
+  const [isNotFound, setIsNotFound] = useState(false); //не найденные по запросу фильмы
 
-const movies = [
-  { _id: 1, image: movieImage, name: '33 слова о дизайне', time: '1ч 42м', saved: true },
-  { _id: 2, image: movieImage, name: '33 слова о дизайне', time: '1ч 42м', saved: false },
-  // { _id: 3, image: movieImage, name: '33 слова о дизайне', time: '1ч 42м', saved: false },
-//   { _id: 4, image: movieImage, name: '33 слова о дизайне', time: '1ч 42м', saved: false },
-//   { _id: 5, image: movieImage, name: '33 слова о дизайне', time: '1ч 42м', saved: false },
-//   { _id: 6, image: movieImage, name: '33 слова о дизайне', time: '1ч 42м', saved: false },
-//   { _id: 7, image: movieImage, name: '33 слова о дизайне', time: '1ч 42м', saved: false },
-//   { _id: 8, image: movieImage, name: '33 слова о дизайне', time: '1ч 42м', saved: false },
-//   { _id: 9, image: movieImage, name: '33 слова о дизайне', time: '1ч 42м', saved: false },
-//   { _id: 10, image: movieImage, name: '33 слова о дизайне', time: '1ч 42м', saved: false },
-//   { _id: 11, image: movieImage, name: '33 слова о дизайне', time: '1ч 42м', saved: false },
+  function handleSearchMovies(qwery) {
+    setSearchQwery(qwery);
+  }
 
-];
+  function handleSchortMovies() {
+    setIsShortMovies(!isShortMovies);
+  }
 
-function SavedMovies() {
-    return (
-        <section className="movies">
-        <Header />
-        <SearchForm />
-        <MoviesCardList cards={movies} isSavedMovies={true} />
-        <Footer />
+  useEffect(() => {
+    const moviesList = filterMovies(savedMovies, searchQwery);
+    setFilterIsMovies(isShortMovies ? filterTimeMovies(moviesList) : moviesList);
+  }, [savedMovies, isShortMovies, searchQwery]);
+
+  useEffect(() => {
+    if (filterIsMovies.length === 0) {
+      setIsNotFound(true);
+    } else {
+      setIsNotFound(false);
+    }
+  }, [filterIsMovies]);
+
+  return (
+    <section className="movies">
+      <Header loggedIn={loggedIn} />
+      <SearchForm
+        onSearchMovies={handleSearchMovies}
+        onFilter={handleSchortMovies} />
+      <MoviesCardList
+        cards={filterIsMovies}
+        isSavedMovies={true}
+        isNotFound={isNotFound}
+        savedMovies={savedMovies}
+        onCardDelete={onCardDelete} />
+      <Footer />
     </section>
-    );
+  );
 }
 
 export default SavedMovies;

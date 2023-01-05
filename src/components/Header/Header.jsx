@@ -10,7 +10,6 @@ import Navigation from '../Navigation/Navigation';
 function Header() {
     const location = useLocation().pathname;
     const logginIn = location === '/';
-    // const logginIn = true;
     const [openModal, setOpenModal] = useState(false);
 
     function handleOpen() {

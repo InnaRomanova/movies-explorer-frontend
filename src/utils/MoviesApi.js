@@ -1,8 +1,6 @@
 class MoviesApi {
     constructor({ baseUrl }) {
         this._baseUrl = baseUrl
-        //this._headers = headers
-        //this._isCredentials = credentials
     }
 
     _getResponseData(movies) {
@@ -21,25 +19,29 @@ class MoviesApi {
         }))
     }
 
-    _request(res) {
-        if (!res.ok) {
-            const err = res.json();
-            return Promise.reject(res.json(err)); // возвращает ошибку
-        }
-        const movies = res.json();
-        return this._getResponseData(movies); //если да, то возвращает полученные данные
+    _request(path, parameters) {
+        return fetch(path, parameters)
+            .then((res) => {
+                return (res.ok) ? res.json() : Promise.reject(res.status);
+            });
     }
 
+
     getMovies() {
-        return this._request(fetch(`${this._baseUrl}/beatfilm-movies`));
+        return this._request(`${this._baseUrl}beatfilm-movies`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
     }
 }
 
 const moviesApi = new MoviesApi({
     baseUrl: 'https://api.nomoreparties.co/',
-    // headers: {
-    //     'Content-Type': 'application/json',
-    // },
+    headers: {
+        'Content-Type': 'application/json',
+    },
     // credentials: 'include',
 })
 

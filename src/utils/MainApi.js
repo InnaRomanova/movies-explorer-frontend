@@ -13,18 +13,6 @@ class MainApi {
             });
     }
 
-    // _request(
-    //     path = '',
-    //     method = 'GET',
-    //     body = null,
-    //     headers = this._headers,
-    //     credentials = this._isCredentials,
-    // ) {
-    //     return fetch( {
-    //         method, body, headers, credentials
-    //     }).then((res) => this._getResponse(res))
-    // }
-
     //регистрация
     signUp({ name, email, password }) {
         return this._getResponse('/signup', {
@@ -57,21 +45,33 @@ class MainApi {
         });
     }
 
+    // метод делает запрос серверу и получает данные профиля
+    getProfile = () => {
+      return this._getResponse('/users/me', {
+          method: 'GET',
+          headers: {
+              ...this._headers,
+              'authorization': `Bearer ${localStorage.getItem('jwt')}`,
+          },
+      });
+    };
+
     //редактирование профиля
-    updateProfile({ name, password }) {
+    updateProfile(name, email) {
         return this._getResponse('/users/me', {
             method: 'PATCH',
             headers: {
                 ...this._headers,
                 'authorization': `Bearer ${localStorage.getItem('jwt')}`,
             },
-            body: JSON.stringify({ name, password }),
+            body: JSON.stringify({ name, email }),
         });
     }
 
     //получение сохраненных фильмов из сервера
     getMovies() {
         return this._getResponse('/movies', {
+            method: 'GET',
             headers: {
                 ...this._headers,
                 'authorization': `Bearer ${localStorage.getItem('jwt')}`,
@@ -80,8 +80,8 @@ class MainApi {
     }
 
     //сохранение фильмов в список пользователя
-    saveMovie(movie) {
-        return this._getResponse('movies', {
+    savedMovies(movie) {
+        return this._getResponse('/movies', {
             method: 'POST',
             headers: {
                 ...this._headers,
@@ -94,7 +94,7 @@ class MainApi {
                 year: movie.year,
                 description: movie.description,
                 image: `https://api.nomoreparties.co${movie.image.url}`,
-                trailer: movie.trailerLink,
+                trailerLink: movie.trailerLink,
                 movieId: movie.id,
                 nameRU: movie.nameRU,
                 nameEN: movie.nameEN,
@@ -115,7 +115,7 @@ class MainApi {
     }
 
     removeMovie(movieId) {
-        return this._getResponse(`movies/${movieId}`, {
+        return this._getResponse(`/movies/${movieId}`, {
             method: 'DELETE',
             headers: {
                 ...this._headers,
