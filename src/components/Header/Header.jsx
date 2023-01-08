@@ -7,9 +7,7 @@ import menu from '../../images/burger-menu.svg';
 import { useState } from 'react';
 import Navigation from '../Navigation/Navigation';
 
-function Header() {
-    const location = useLocation().pathname;
-    const logginIn = location === '/';
+function Header({ loggedIn }) {
     const [openModal, setOpenModal] = useState(false);
 
     function handleOpen() {
@@ -22,7 +20,7 @@ function Header() {
 
     return (
         <>
-            {!logginIn ? (<header className="header__loggined">
+            {loggedIn ? (<header className="header__loggined">
                 <Link to="/" className="header__logo-icon">
                 <img  src={Logo} alt="Логотип" /></Link>
                 <div className="header__container-movies">

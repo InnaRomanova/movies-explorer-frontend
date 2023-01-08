@@ -10,6 +10,7 @@ import Movies from '../Movies/Movies';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import Profile from '../Profile/Profile';
 import NotFound from '../NotFound/NotFound';
+import InfoTooltip from '../InfoTooltip/InfoTooltip';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import { api } from '../../utils/MainApi';
@@ -24,21 +25,21 @@ function App() {
     const [isSuccess, setIsSuccess] = useState(false);
     const history = useNavigate();
     const location = useLocation().pathname;
-    const [loggedIn, setLoggedIn] = useState(false);
+    // const [loggedIn, setLoggedIn] = useState(false);
     const [isloggedIn, setIsLoggedIn] = useState(false);
     const [isPreloader, setIsPreloader] = useState(true);
+    const [isUpdate, setIsUpdate] = useState(false);
 
     //Проверка токена и авторизация пользователя
     useEffect(() => {
         const jwt = localStorage.getItem('jwt');
-
         if (jwt) {
             api
                 .checkToken(jwt)
                 .then((res) => {
                     if (res) {
                         localStorage.removeItem('allMovies');
-                        setLoggedIn(true);
+                        setIsLoggedIn(true);
                     }
                     history(location);
                 })
@@ -72,7 +73,7 @@ function App() {
     function handleRegister({ name, email, password }) {
         api.signUp({ name, email, password })
             .then(() => {
-                history('/movies');
+                handleLogin({ email, password })
             })
             .catch((err) => {
                 setErrorRequest(true);
@@ -102,8 +103,14 @@ function App() {
         localStorage.removeItem('movieSearch');
         localStorage.removeItem('shortMovies');
         localStorage.removeItem('allMovies');
+        localStorage.removeItem('savedMovies');
         history('/');
     };
+
+    function closeUnsuccessPopup() {
+      setIsSuccess(true);
+      setIsUpdate(false);
+    }
 
     // редактирование профиля
     function handleUpdateProfile(name, email) {
@@ -113,13 +120,11 @@ function App() {
                 setCurrentUser(user);
                 setErrorRequest(false);
                 setIsSuccess(true);
-                setTimeout(() => setErrorRequest(false), 4000);
+                setIsUpdate(true);
             })
             .catch((err) => {
-                console.log('error?');
                 setErrorRequest(true);
                 setIsSuccess(false);
-                setTimeout(() => setErrorRequest(false), 4000);
                 console.log(`Ошибка выхода из аккаунта: ${err}`);
             })
             .finally(() => {
@@ -212,8 +217,9 @@ function App() {
                         <Route path="/*" element={
                             <NotFound />} >
                         </Route>
-
                     </Routes>
+                    <InfoTooltip isSuccess={isSuccess} onClose={closeUnsuccessPopup} />
+                    <InfoTooltip isSuccess={!isUpdate} isUpdate={isUpdate} onClose={closeUnsuccessPopup} />
                 </div>
             </CurrentUserContext.Provider>
         </div >

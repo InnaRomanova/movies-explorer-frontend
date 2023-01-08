@@ -47,13 +47,13 @@ class MainApi {
 
     // метод делает запрос серверу и получает данные профиля
     getProfile = () => {
-      return this._getResponse('/users/me', {
-          method: 'GET',
-          headers: {
-              ...this._headers,
-              'authorization': `Bearer ${localStorage.getItem('jwt')}`,
-          },
-      });
+        return this._getResponse('/users/me', {
+            method: 'GET',
+            headers: {
+                ...this._headers,
+                'authorization': `Bearer ${localStorage.getItem('jwt')}`,
+            },
+        });
     };
 
     //редактирование профиля

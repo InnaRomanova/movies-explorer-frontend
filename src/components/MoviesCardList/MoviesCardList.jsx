@@ -4,6 +4,7 @@ import MoviesCard from "../MoviesCard/MoviesCard";
 import Preloader from "../Preloader/Preloader";
 import './MoviesCardList.css';
 import SearchError from '../SearchError/SearchError';
+import { SHOW_DECKTOP, SHOW_TABLET, SHOW_MODULE } from "../../utils/constants";
 
 function MoviesCardList({
     cards,
@@ -13,13 +14,10 @@ function MoviesCardList({
     handleSaveClick,
     onCardDelete,
     isRequestError }) {
-        
+
     const [end, setEnd] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
-
-    const ShowDecktop = 3;
-    const ShowTablet = 2;
-    const ShowMobule = 1;
+    const [isLocalStorageMovies, setIsLocalStorageMovies] = useState(false);
 
     useEffect(() => {
         shownCount();
@@ -28,6 +26,7 @@ function MoviesCardList({
     useEffect(() => {
         setTimeout(() => {
             setIsLoading(false);
+            localStorage.getItem('movies') === null ? setIsLocalStorageMovies(false) : setIsLocalStorageMovies(true);
             window.addEventListener('resize', shownCount);
         }, 2000);
     });
@@ -46,22 +45,22 @@ function MoviesCardList({
     function showMore() {
         const display = window.innerWidth;
         if (display > 1024) {
-            setEnd(end + ShowDecktop);
+            setEnd(end + SHOW_DECKTOP);
         } else if (display > 520) {
-            setEnd(end + ShowTablet);
+            setEnd(end + SHOW_TABLET);
         } else if (display < 520) {
-            setEnd(end + ShowMobule);
+            setEnd(end + SHOW_MODULE);
         }
     }
 
     function getSavedMovieCard(savedMovies, card) {
         return savedMovies.find((savedMovie) => savedMovie.movieId === card.id);
     }
-
+    
     return (
         <section className="cards">
             {isLoading && <Preloader />}
-            {isNotFound && !isLoading && <SearchError errorText={'Ничего не найдено'} />}
+            {isNotFound && !isLoading && isLocalStorageMovies && <SearchError errorText={'Ничего не найдено'} />}
             {isRequestError && !isLoading && (
                 <SearchError
                     errorText={

@@ -1,5 +1,4 @@
-const EMAIL_REGEXP = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$|^$/iu;
-const NAME_REGEXP= /^[а-яА-ЯёЁa-zA-Z0-9]{3,}$|^$/;
+import { EMAIL_REGEXP, NAME_REGEXP } from '../utils/constants';
 
 function isEmailValid(value) {
     return EMAIL_REGEXP.test(value)
@@ -17,7 +16,7 @@ function isPasswordValid(value) {
 
 function isEpmtyValid(values) {
     for(let i in values){
-        if(values[i].length === 0) return false;
+        if(values[i] === undefined || values[i].length === 0) return false;
     }
     return true;
 }

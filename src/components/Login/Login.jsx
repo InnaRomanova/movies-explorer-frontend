@@ -36,7 +36,7 @@ function Login({onLogin}) {
                 <span className={isValidEmail ? "form__span_hidden" : "form__span"}>Что-то пошло не так ...</span>
             </label>
             <label className="form__label">Пароль
-                <input className="form__input" value={password} onChange={((event) => { setPassword(event.target.value) })} required/>
+                <input className="form__input" type="password" value={password} onChange={((event) => { setPassword(event.target.value) })} required/>
                 <span className={isValidPassword ? "form__span_hidden" : "form__span"}>Что-то пошло не так ...</span>
             </label>
             <div className="form__buttom-container">

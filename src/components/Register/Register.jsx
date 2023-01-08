@@ -19,7 +19,7 @@ function Register({ onRegister }) {
         isEmailValid(email) ? setIsValidEmail(true) : setIsValidEmail(false);
         isNameValid(name) ? setIsValidName(true) : setIsValidName(false);
         isPasswordValid(password) ? setIsValidPassword(true) : setIsValidPassword(false);
-        isEpmtyValid({email, name, password}) ? setIsEpmty(true) : setIsEpmty(false);
+        isEpmtyValid({ email, name, password }) ? setIsEpmty(true) : setIsEpmty(false);
     }, [email, name, password])
 
     function handleSubmit(e) {
@@ -48,6 +48,7 @@ function Register({ onRegister }) {
                 </label>
                 <label className="form__label">Пароль
                     <input className="form__input"
+                        type="password"
                         value={password || ''}
                         onChange={((event) => { setPassword(event.target.value) })}
                         required />

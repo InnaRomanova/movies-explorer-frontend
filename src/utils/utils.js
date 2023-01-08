@@ -1,4 +1,4 @@
-const SHORTS = 40;
+import { SHORTS } from "../utils/constants";
 
 //фильтр
 export function filterMovies(movies, query) {

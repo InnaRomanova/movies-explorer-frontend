@@ -9,7 +9,6 @@ import { moviesApi } from "../../utils/MoviesApi";
 import { filterMovies, filterTimeMovies } from '../../utils/utils';
 
 function Movies({ handleSaveClick, onCardDelete, savedMovies, loggedIn }) {
-    const [isMovies, setIsMovies] = useState([]);
     const [saveMovies, setSaveMovies] = useState([]);
     const [isNotFound, setIsNotFound] = useState(false); //фильмы не найдены
     const [isShortMovies, setIsShortMovies] = useState(false); // чекбокс короткометражек
@@ -38,9 +37,9 @@ function Movies({ handleSaveClick, onCardDelete, savedMovies, loggedIn }) {
           const movies = JSON.parse(localStorage.getItem('movies'));
           setInitialMovies(movies);
           if (localStorage.getItem('shortMovies') === 'true') {
-            setIsMovies(filterTimeMovies(movies));
+            setSaveMovies(filterTimeMovies(movies));
           } else {
-            setIsMovies(movies);
+            setSaveMovies(movies);
           }
         } else {
         }
@@ -64,7 +63,7 @@ function Movies({ handleSaveClick, onCardDelete, savedMovies, loggedIn }) {
     function handleFilterMovies(movies, qwery, short) {
         const movieList = filterMovies(movies, qwery, short); //фильтрация массива полученного
         setSaveMovies(movieList); //запись в стейт
-        setIsMovies(short ? filterTimeMovies(movieList) : movieList);
+        setSaveMovies(short ? filterTimeMovies(movieList) : movieList);
         localStorage.setItem('movies', JSON.stringify(movieList));
         localStorage.setItem('allMovies', JSON.stringify(movies));
     }
@@ -92,7 +91,7 @@ function Movies({ handleSaveClick, onCardDelete, savedMovies, loggedIn }) {
                 });
         }
     }
-    
+
     return (
         <section className="movies">
             <Header loggedIn={loggedIn }/>

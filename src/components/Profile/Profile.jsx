@@ -6,17 +6,13 @@ import { useEffect } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { isEmailValid, isNameValid, isEpmtyValid } from '../../utils/validate';
 
-
 function Profile({ onLogout, loggedIn, onUpdateProfile }) {
-    let currentUser;
-    currentUser = React.useContext(CurrentUserContext);
-
-    const [email, setEmail] = useState(currentUser.email);
-    const [name, setName] = useState(currentUser.name);
+    let currentUser = React.useContext(CurrentUserContext);
+    const [email, setEmail] = useState(false);
+    const [name, setName] = useState(false);
     const [isValidEmail, setIsValidEmail] = useState(false);
     const [isValidName, setIsValidName] = useState(false);
     const [isEpmty, setIsEpmty] = useState(false);
-
 
     useEffect(() => {
         isEmailValid(email) ? setIsValidEmail(true) : setIsValidEmail(false);
@@ -24,8 +20,14 @@ function Profile({ onLogout, loggedIn, onUpdateProfile }) {
         isEpmtyValid({ email, name }) ? setIsEpmty(true) : setIsEpmty(false);
     }, [email, name])
 
+    useEffect(() => {
+        setEmail(currentUser.email);
+        setName(currentUser.name);
+    }, [currentUser])
+
     //редактировать профиль
-    function handleEdit() {
+    function handleEdit(e) {
+        e.preventDefault();
         onUpdateProfile(name, email);
     }
 
