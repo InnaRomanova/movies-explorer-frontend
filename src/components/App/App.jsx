@@ -20,14 +20,10 @@ function App() {
     const [isLoading, setIsLoading] = useState(false);
     const [currentUser, setCurrentUser] = useState({});
     const [savedMovies, setSavedMovies] = useState([]);
-    const [findMovies, setFindMovies] = useState(true);
-    const [errorRequest, setErrorRequest] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
     const history = useNavigate();
     const location = useLocation().pathname;
-    // const [loggedIn, setLoggedIn] = useState(false);
     const [isloggedIn, setIsLoggedIn] = useState(false);
-    const [isPreloader, setIsPreloader] = useState(true);
     const [isUpdate, setIsUpdate] = useState(false);
 
     //Проверка токена и авторизация пользователя
@@ -76,7 +72,6 @@ function App() {
                 handleLogin({ email, password })
             })
             .catch((err) => {
-                setErrorRequest(true);
                 console.log(`Ошибка при регистрации: ${err}`);
             });
     }
@@ -90,7 +85,6 @@ function App() {
                 history('/movies');
             })
             .catch((err) => {
-                setErrorRequest(true);
                 console.log(`Ошибка при авторизации: ${err}`);
             })
     }
@@ -118,12 +112,10 @@ function App() {
         api.updateProfile(name, email)
             .then((user) => {
                 setCurrentUser(user);
-                setErrorRequest(false);
                 setIsSuccess(true);
                 setIsUpdate(true);
             })
             .catch((err) => {
-                setErrorRequest(true);
                 setIsSuccess(false);
                 console.log(`Ошибка выхода из аккаунта: ${err}`);
             })
@@ -148,12 +140,9 @@ function App() {
 
     //удаление фильмов
     function handleDeleteMovie(movie) {
-        console.log(movie);
         api.removeMovie(movie._id)
             .then(() => {
                 setSavedMovies((state) => state.filter((item) => item._id !== movie._id));
-                if (!JSON.parse(localStorage.getItem('savedMovies')).length)
-                    setFindMovies(false);
             })
             .catch((err) => {
                 console.log(`Ошибка удаления сохраненного фильма из списка: ${err}`);
@@ -188,7 +177,6 @@ function App() {
                             <ProtectedRoute
                                 loggedIn={isloggedIn}
                                 component={Movies}
-                                isPreloader={isPreloader}
                                 savedMovies={savedMovies}
                                 onCardDelete={handleDeleteMovie}
                                 handleSaveClick={handleSaveMovie} >
@@ -199,7 +187,6 @@ function App() {
                             <ProtectedRoute
                                 component={SavedMovies}
                                 loggedIn={isloggedIn}
-                                isPreloader={isPreloader}
                                 savedMovies={savedMovies}
                                 onCardDelete={handleDeleteMovie} >
                             </ProtectedRoute>} >
