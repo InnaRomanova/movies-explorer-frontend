@@ -205,7 +205,7 @@ function App() {
                             <NotFound />} >
                         </Route>
                     </Routes>
-                    <InfoTooltip isSuccess={isSuccess} onClose={closeUnsuccessPopup} />
+                    {/*<InfoTooltip isSuccess={isSuccess} onClose={closeUnsuccessPopup} />*/}
                     <InfoTooltip isSuccess={!isUpdate} isUpdate={isUpdate} onClose={closeUnsuccessPopup} />
                 </div>
             </CurrentUserContext.Provider>
