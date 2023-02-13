@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/movies-explorer-frontend/static/css/main.abbe3b38.css",
+    "main.js": "/movies-explorer-frontend/static/js/main.bd1d2723.js",
+    "static/media/landing-logo.svg": "/movies-explorer-frontend/static/media/landing-logo.5ddce044c2ac3952983f2b252aeb737f.svg",
+    "static/media/Inter-Medium.woff": "/movies-explorer-frontend/static/media/Inter-Medium.9053572c46aeb4b16caa.woff",
+    "static/media/Inter-Regular.woff": "/movies-explorer-frontend/static/media/Inter-Regular.8c206db99195777c6769.woff",
+    "static/media/myPhoto.jpg": "/movies-explorer-frontend/static/media/myPhoto.4063785bde8dc8c945f3.jpg",
+    "static/media/Inter-Medium.woff2": "/movies-explorer-frontend/static/media/Inter-Medium.293fd13dbca5a3e450ef.woff2",
+    "static/media/Inter-Regular.woff2": "/movies-explorer-frontend/static/media/Inter-Regular.c8ba52b05a9ef10f4758.woff2",
+    "static/media/logo.svg": "/movies-explorer-frontend/static/media/logo.dacfa879c5c02581daba7b5241cfa740.svg",
+    "index.html": "/movies-explorer-frontend/index.html",
+    "static/media/account.svg": "/movies-explorer-frontend/static/media/account.20a52938d8b0d0fcddd7e8475d16bbbb.svg",
+    "static/media/saved_active.svg": "/movies-explorer-frontend/static/media/saved_active.bf1e0b7033e313a04e12.svg",
+    "static/media/delete-card.svg": "/movies-explorer-frontend/static/media/delete-card.d197a75e7d702524af49.svg",
+    "static/media/saved.svg": "/movies-explorer-frontend/static/media/saved.76f6047b9a58d592991b.svg",
+    "static/media/burger-menu.svg": "/movies-explorer-frontend/static/media/burger-menu.08035af1e508cd8cfed5606a27648836.svg",
+    "static/media/close-button.svg": "/movies-explorer-frontend/static/media/close-button.80dfd5bd01b8fe0a895e.svg",
+    "static/media/potrfolio.svg": "/movies-explorer-frontend/static/media/potrfolio.62cc3d1841c06c3215777dfa2eec9a57.svg",
+    "main.abbe3b38.css.map": "/movies-explorer-frontend/static/css/main.abbe3b38.css.map",
+    "main.bd1d2723.js.map": "/movies-explorer-frontend/static/js/main.bd1d2723.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.abbe3b38.css",
+    "static/js/main.bd1d2723.js"
+  ]
+}
