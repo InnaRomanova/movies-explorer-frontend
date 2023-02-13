@@ -2,7 +2,7 @@
 
 **Приложение для поиска и сохранения фильмов, фронтенд часть дипломного проекта студента Web-Факультета Яндекс Практикума**
 
-** Для просмотра [откройте](https://innaromanova.github.io/movies-explorer-frontend) в браузере.
+**Для просмотра [откройте](https://innaromanova.github.io/movies-explorer-frontend) в браузере.**
 * Пул реквест: Level-3(https://github.com/InnaRomanova/movies-explorer-frontend/pull/2)
 * IP 158.160.39.1
 * Frontend: https://romanova.nomoredomains.club
