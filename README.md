@@ -4,9 +4,9 @@
 
 **Для просмотра [откройте](https://innaromanova.github.io/movies-explorer-frontend) в браузере.**
 * Пул реквест: Level-3(https://github.com/InnaRomanova/movies-explorer-frontend/pull/2)
-* IP 158.160.39.1
-* Frontend: https://romanova.nomoredomains.club
-* Backend: https://api.romanova.nomoredomains.club
+* IP ...
+* Frontend: ...
+* Backend: ...
 * [Ссылка на макет в Figma](https://disk.yandex.ru/d/jxtSL826MjigTw)
 
 **Использованные технологии**
